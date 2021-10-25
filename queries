@@ -1,0 +1,49 @@
+USE school_project;
+
+-- Exercise 1
+SELECT professor_id, professor_name,
+	AVG(grade_score) 
+FROM grades
+INNER JOIN professors
+ON grades.grade_professor_id = professors.professor_id
+GROUP BY grade_professor_id;
+
+-- Exercise 2	
+SELECT students_id,  students_name,
+	MAX(grade_score) 
+FROM grades
+INNER JOIN students
+ON grades.grade_student_id = students.students_id
+GROUP BY grade_student_id;
+
+-- Exercise 3
+SELECT  students_id, students_name, courses_id, course_name
+FROM courses
+LEFT JOIN students
+ON courses.course_students_id = students.students_id
+GROUP BY  students_id, students_name, courses_id, course_name;
+
+--  Exercise 4
+
+SELECT AVG(grade_score) avg_course, course_name from grades
+INNER JOIN courses
+on  grade_course_id= courses.courses_id
+GROUP BY grade_course_id
+ORDER BY  avg_course ASC;
+
+
+
+--  Exercise 5
+SELECT students_name, professor_name, course_name, course_students_id, course_professor_id
+FROM students
+INNER JOIN courses
+ON students.students_id = courses.course_students_id
+INNER JOIN professors
+ON courses.course_professor_id = professors.professor_id
+GROUP BY students_name, professor_name, course_name, course_students_id, course_professor_id;
+	
+
+
+
+
+

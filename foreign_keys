@@ -1,0 +1,21 @@
+USE School_project;
+
+SELECT *
+FROM students s
+JOIN courses c
+ON c.course_students_id = s.students_id
+JOIN grades g
+ON g.grade_student_id = s.students_id;
+
+SELECT *
+FROM professors p
+JOIN courses c
+ON c.course_professor_id = p.professor_id
+JOIN grades g
+ON g.grade_professor_id = p.professor_id;
+
+
+SELECT *
+FROM courses c
+JOIN grades g
+ON g.grade_course_id = c.courses_id;
